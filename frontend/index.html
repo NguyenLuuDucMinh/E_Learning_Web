@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Learning Vibe - Học tập thật cool!</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts: Poppins (cho tiêu đề) và Open Sans (cho nội dung) -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="main-header" id="main-header">
+        <div class="logo">
+            <i class="fas fa-rocket"></i> E-Learning Vibe
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="#" class="nav-link active" data-target="homepage">Trang Chủ</a></li>
+                <li><a href="#" class="nav-link" data-target="browse-courses">Khám Phá Khóa Học</a></li>
+                <li><a href="#" class="nav-link" data-target="about-us">Về Chúng Tôi</a></li>
+                <li><a href="#" class="nav-link" data-target="contact-us">Liên Hệ</a></li>
+            </ul>
+        </nav>
+        <div class="user-actions">
+            <button class="btn btn-primary" id="login-register-btn">Đăng nhập / Đăng ký</button>
+            <div class="user-profile hidden" id="user-profile">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cfd70dd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=40&h=40&q=80" alt="User Avatar" class="user-avatar">
+                <span id="user-name">Chào, Học Viên!</span>
+                <div class="user-dropdown">
+                    <a href="#" class="nav-link" data-target="dashboard">Dashboard</a>
+                    <a href="#" id="logout-btn">Đăng xuất</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cfd70dd4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=60&h=60&q=80" alt="User Avatar" class="sidebar-avatar">
+            <span id="sidebar-user-name">Học Viên</span>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="#" class="sidebar-nav-link active" data-target="dashboard"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                <li><a href="#" class="sidebar-nav-link" data-target="my-courses"><i class="fas fa-book-open"></i> Khóa Học Của Tôi</a></li>
+                <li><a href="#" class="sidebar-nav-link" data-target="create-course-page"><i class="fas fa-plus-circle"></i> Tạo Khóa Học Mới</a></li>
+                <li><a href="#" class="sidebar-nav-link" data-target="my-created-courses-page"><i class="fas fa-chalkboard-teacher"></i> Khóa Học Đã Tạo</a></li>
+                <li><a href="#" class="sidebar-nav-link" data-target="settings"><i class="fas fa-cog"></i> Cài Đặt</a></li>
+                <li><a href="#" class="sidebar-nav-link" id="sidebar-logout-btn"><i class="fas fa-sign-out-alt"></i> Đăng Xuất</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+    <!-- Content Wrapper - Bọc toàn bộ nội dung chính còn lại (trừ header và sidebar) -->
+    <div class="content-wrapper" id="content-wrapper">
+        <main class="content-area" id="content-area">
+
+            <!-- 1. Homepage Section -->
+            <section id="homepage" class="page-section active">
+                <div class="hero-section">
+                    <div class="hero-content">
+                        <h1>Khám Phá Thế Giới Tri Thức</h1>
+                        <p>Học hỏi những điều mới mẻ, phát triển kỹ năng với các khóa học được thiết kế riêng cho bạn!</p>
+                        <button class="btn btn-primary btn-large" data-target="browse-courses">Bắt Đầu Học Ngay</button>
+                    </div>
+                    <div class="hero-image">
+                        <img src="https://images.unsplash.com/photo-1503676260721-e377f0794939?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&h=300&q=80" alt="Hero Image">
+                    </div>
+                </div>
+
+                <h2 class="section-title">Các Khóa Học Nổi Bật</h2>
+                <div class="course-grid" id="featured-courses-grid">
+                    <!-- Course cards will be injected here by JS -->
+                </div>
+            </section>
+
+            <!-- 2. Course Detail Section -->
+            <section id="course-detail-page" class="page-section hidden">
+                <div class="course-detail-header">
+                    <img id="course-detail-image" src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&h=400&q=80" alt="Course Image" class="course-detail-img">
+                    <div class="course-detail-info">
+                        <h1 id="course-detail-title">Tên Khóa Học Chi Tiết</h1>
+                        <p class="course-detail-instructor">Giảng viên: <span id="course-detail-instructor">Giảng Viên Nguyễn Văn A</span></p>
+                        <p class="course-detail-rating"><i class="fas fa-star"></i> 4.9 (1,234 đánh giá)</p>
+                        <p class="course-detail-price" id="course-detail-price">Miễn phí</p>
+                        <button class="btn btn-primary btn-large" id="enroll-course-btn">Đăng Ký Khóa Học</button>
+                    </div>
+                </div>
+
+                <div class="course-detail-tabs">
+                    <button class="tab-button active" data-tab="about">Mô tả</button>
+                    <button class="tab-button" data-tab="curriculum">Chương trình học</button>
+                    <button class="tab-button" data-tab="instructor">Giảng viên</button>
+                </div>
+
+                <div class="tab-content active" id="about-tab">
+                    <h3 class="subsection-title">Mô tả khóa học</h3>
+                    <p id="course-detail-description">Đây là phần mô tả chi tiết về khóa học, giới thiệu về nội dung, mục tiêu và những gì học viên sẽ đạt được sau khi hoàn thành khóa học. Khóa học này được thiết kế để cung cấp kiến thức nền tảng vững chắc và kỹ năng thực tế.</p>
+                </div>
+
+                <div class="tab-content hidden" id="curriculum-tab">
+                    <h3 class="subsection-title">Chương trình học</h3>
+                    <ul class="curriculum-list" id="course-detail-curriculum">
+                        <!-- Lectures will be injected here by JS -->
+                    </ul>
+                </div>
+
+                <div class="tab-content hidden" id="instructor-tab">
+                    <h3 class="subsection-title">Giảng viên</h3>
+                    <div class="instructor-info">
+                        <img id="instructor-avatar" src="https://images.unsplash.com/photo-1507003211169-e69adba4c2d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&h=100&q=80" alt="Instructor Avatar" class="instructor-avatar">
+                        <div class="instructor-details">
+                            <h4 id="instructor-name">Nguyễn Văn A</h4>
+                            <p id="instructor-bio">Giảng viên Nguyễn Văn A có hơn 10 năm kinh nghiệm trong lĩnh vực phát triển web và đã đào tạo hàng nghìn học viên thành công. Với phương pháp giảng dạy dễ hiểu và thực tế, anh ấy luôn truyền cảm hứng cho người học.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Learning Page -->
+            <section id="learning-page" class="page-section hidden">
+                <h1 class="learning-title" id="learning-course-title"></h1>
+                <div class="learning-content">
+                    <div class="video-player-container">
+                        <iframe id="video-player" width="100%" height="auto" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <h2 class="current-lecture-title" id="current-lecture-title">Bài 1: Giới thiệu khóa học</h2>
+                        <div class="lecture-navigation">
+                            <button class="btn btn-secondary" id="prev-lecture-btn"><i class="fas fa-chevron-left"></i> Bài trước</button>
+                            <button class="btn btn-secondary" id="next-lecture-btn">Bài tiếp theo <i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="lecture-list-sidebar">
+                        <h3>Danh sách bài giảng</h3>
+                        <ul id="learning-lecture-list">
+                            <!-- Lectures will be injected here by JS -->
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Create Course Page -->
+            <section id="create-course-page" class="page-section hidden">
+                <h2 class="section-title">Tạo Khóa Học Mới</h2>
+                <form class="course-form" id="create-course-form">
+                    <div class="form-group">
+                        <label for="course-title">Tiêu đề khóa học</label>
+                        <input type="text" id="course-title" placeholder="Ví dụ: Lập trình Web với ReactJS" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-short-desc">Mô tả ngắn</label>
+                        <input type="text" id="course-short-desc" placeholder="Giới thiệu nhanh về khóa học" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-full-desc">Mô tả chi tiết</label>
+                        <textarea id="course-full-desc" rows="6" placeholder="Mô tả đầy đủ nội dung, mục tiêu, đối tượng..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-image">Hình ảnh khóa học (URL)</label>
+                        <input type="url" id="course-image" placeholder="Ví dụ: https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+                    </div>
+                    <div class="form-group">
+                        <label for="course-instructor">Giảng viên (Tên của bạn)</label>
+                        <input type="text" id="course-instructor" placeholder="Tên của bạn" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="course-price">Giá (VNĐ)</label>
+                        <input type="number" id="course-price" value="0" min="0">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="course-is-free"> Khóa học miễn phí
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-large">Tạo Khóa Học</button>
+                </form>
+            </section>
+
+            <!-- 5. My Created Courses Page -->
+            <section id="my-created-courses-page" class="page-section hidden">
+                <h2 class="section-title">Các Khóa Học Bạn Đã Tạo</h2>
+                <div class="course-grid" id="my-created-courses-grid">
+                    <!-- User's created course cards will be injected here by JS -->
+                </div>
+                <button class="btn btn-primary mt-20" data-target="create-course-page"><i class="fas fa-plus-circle"></i> Tạo Khóa Học Mới</button>
+            </section>
+
+            <!-- 6. Edit Course Lectures Page (for adding lectures) -->
+            <section id="edit-course-lectures-page" class="page-section hidden">
+                <h2 class="section-title">Quản lý bài giảng cho khóa học: <span id="edit-course-title"></span></h2>
+                <div class="lecture-management">
+                    <h3>Các bài giảng hiện có</h3>
+                    <ul class="curriculum-list" id="edit-lectures-list">
+                        <!-- Existing lectures will be injected here by JS -->
+                    </ul>
+
+                    <h3>Thêm bài giảng mới</h3>
+                    <form class="lecture-form" id="add-lecture-form">
+                        <input type="hidden" id="current-editing-course-id">
+                        <div class="form-group">
+                            <label for="lecture-title">Tiêu đề bài giảng</label>
+                            <input type="text" id="lecture-title" placeholder="Ví dụ: Bài 1: Giới thiệu HTML" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lecture-video-url">URL Video (Youtube/Vimeo)</label>
+                            <input type="url" id="lecture-video-url" placeholder="Ví dụ: https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="lecture-description">Mô tả bài giảng</label>
+                            <textarea id="lecture-description" rows="3" placeholder="Mô tả ngắn gọn về nội dung bài giảng này"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Thêm Bài Giảng</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Placeholder sections for other pages -->
+            <section id="dashboard" class="page-section hidden">
+                <h2 class="section-title">Dashboard của tôi</h2>
+                <p>Chào mừng bạn trở lại, <span id="dashboard-user-name"></span>! Đây là nơi bạn có thể theo dõi tiến độ học tập và các hoạt động của mình.</p>
+                <div class="info-card-grid">
+                    <div class="info-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Tiến độ học tập</h3>
+                        <p>Bạn đã hoàn thành <span>3/5</span> khóa học.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-certificate"></i>
+                        <h3>Chứng chỉ của bạn</h3>
+                        <p>Đã nhận được <span>2</span> chứng chỉ.</p>
+                    </div>
+                    <div class="info-card">
+                        <i class="fas fa-bell"></i>
+                        <h3>Thông báo mới</h3>
+                        <p>Có <span>1</span> thông báo mới về khóa học "React cơ bản".</p>
+                    </div>
+                </div>
+            </section>
+            <section id="my-courses" class="page-section hidden">
+                <h2 class="section-title">Khóa Học Của Tôi</h2>
+                <p>Đây là danh sách các khóa học bạn đã đăng ký hoặc đang học.</p>
+                <div class="course-grid" id="my-enrolled-courses-grid">
+                    <!-- Enrolled course cards will be injected here by JS -->
+                </div>
+            </section>
+            <section id="browse-courses" class="page-section hidden">
+                <h2 class="section-title">Khám Phá Tất Cả Khóa Học</h2>
+                <div class="course-grid" id="all-courses-grid">
+                     <!-- All course cards will be injected here by JS -->
+                </div>
+            </section>
+            <section id="about-us" class="page-section hidden">
+                <h2 class="section-title">Về Chúng Tôi</h2>
+                <p>E-Learning Vibe được thành lập với sứ mệnh mang đến trải nghiệm học tập trực tuyến thú vị và hiệu quả cho giới trẻ. Chúng tôi tin rằng học tập không bao giờ nhàm chán nếu có phương pháp đúng đắn và nguồn cảm hứng phù hợp.</p>
+                <p>Với các khóa học đa dạng từ nhiều lĩnh vực, đội ngũ giảng viên tâm huyết và giao diện thân thiện, chúng tôi cam kết giúp bạn phát triển bản thân và đạt được những mục tiêu học tập của mình.</p>
+            </section>
+            <section id="contact-us" class="page-section hidden">
+                <h2 class="section-title">Liên Hệ Với Chúng Tôi</h2>
+                <p>Có bất kỳ câu hỏi hoặc góp ý? Đừng ngần ngại liên hệ với chúng tôi!</p>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="contact-name">Tên của bạn</label>
+                        <input type="text" id="contact-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email của bạn</label>
+                        <input type="email" id="contact-email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Nội dung</label>
+                        <textarea id="contact-message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi Tin Nhắn</button>
+                </form>
+            </section>
+             <section id="settings" class="page-section hidden">
+                <h2 class="section-title">Cài Đặt Tài Khoản</h2>
+                <p>Quản lý thông tin cá nhân và tùy chọn của bạn.</p>
+                <form class="settings-form">
+                    <div class="form-group">
+                        <label for="setting-name">Tên hiển thị</label>
+                        <input type="text" id="setting-name" value="Học Viên" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="setting-email">Email</label>
+                        <input type="email" id="setting-email" value="hocvien@example.com" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="setting-password">Mật khẩu mới</label>
+                        <input type="password" id="setting-password" placeholder="Để trống nếu không muốn đổi">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Lưu Thay Đổi</button>
+                </form>
+                <div id="upgrade-account-section" class="mt-20">
+                    <h3 class="subsection-title">Nâng Cấp Tài Khoản</h3>
+                    <p>Nâng cấp tài khoản của bạn lên giảng viên để có thể tạo và quản lý các khóa học.</p>
+                    <button type="button" class="btn btn-secondary" id="upgrade-account-btn">Nâng Cấp Ngay</button>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Login/Register Modal -->
+    <div class="modal-overlay hidden" id="login-register-modal">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close-btn">×</button>
+            <div class="modal-tabs">
+                <button class="modal-tab active" data-modal-tab="login">Đăng nhập</button>
+                <button class="modal-tab" data-modal-tab="register">Đăng ký</button>
+            </div>
+
+            <!-- Login Form -->
+            <form class="modal-form active" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email</label>
+                    <input type="email" id="login-email" placeholder="Nhập email của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Mật khẩu</label>
+                    <input type="password" id="login-password" placeholder="Nhập mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                <p class="form-footer">Quên mật khẩu? <a href="#">Nhấn vào đây</a></p>
+            </form>
+
+            <!-- Register Form -->
+            <form class="modal-form hidden" id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Tên của bạn</label>
+                    <input type="text" id="register-name" placeholder="Ví dụ: Nguyễn Văn A" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Email</label>
+                    <input type="email" id="register-email" placeholder="Nhập email của bạn" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Mật khẩu</label>
+                    <input type="password" id="register-password" placeholder="Tối thiểu 6 ký tự" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Xác nhận mật khẩu</label>
+                    <input type="password" id="register-confirm-password" placeholder="Nhập lại mật khẩu" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Đăng ký</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="script.js" type="module"></script>
+</body>
+</html>
