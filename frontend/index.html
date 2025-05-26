@@ -160,12 +160,16 @@
                         <textarea id="course-full-desc" rows="6" placeholder="Mô tả đầy đủ nội dung, mục tiêu, đối tượng..."></textarea>
                     </div>
                     <div class="form-group">
-                        <label for="course-image">Hình ảnh khóa học (URL)</label>
-                        <input type="url" id="course-image" placeholder="Ví dụ: https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+                        <label for="course-image-url">Hình ảnh khóa học (URL)</label>
+                        <input type="url" id="course-image-url" placeholder="Ví dụ: https://images.unsplash.com/photo-1517694712202-14dd9538aa97">
+                        <p class="form-hint">Hoặc tải lên hình ảnh từ máy tính của bạn:</p>
+                        <label for="course-image-file" class="btn btn-secondary">Chọn ảnh từ máy tính</label>
+                        <input type="file" id="course-image-file" accept="image/*" class="hidden-file-input">
+                        <span id="course-image-file-name"></span>
                     </div>
                     <div class="form-group">
                         <label for="course-instructor">Giảng viên (Tên của bạn)</label>
-                        <input type="text" id="course-instructor" placeholder="Tên của bạn" required>
+                        <input type="text" id="course-instructor" placeholder="Tên của bạn" required disabled>
                     </div>
                     <div class="form-group">
                         <label for="course-price">Giá (VNĐ)</label>
@@ -205,7 +209,11 @@
                         </div>
                         <div class="form-group">
                             <label for="lecture-video-url">URL Video (Youtube/Vimeo)</label>
-                            <input type="url" id="lecture-video-url" placeholder="Ví dụ: https://www.youtube.com/watch?v=dQw4w9WgXcQ" required>
+                            <input type="url" id="lecture-video-url" placeholder="Ví dụ: https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                             <p class="form-hint">Hoặc tải lên video từ máy tính của bạn:</p>
+                            <label for="lecture-video-file" class="btn btn-secondary">Chọn video từ máy tính</label>
+                            <input type="file" id="lecture-video-file" accept="video/*" class="hidden-file-input">
+                            <span id="lecture-video-file-name"></span>
                         </div>
                         <div class="form-group">
                             <label for="lecture-description">Mô tả bài giảng</label>

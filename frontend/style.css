@@ -1072,3 +1072,19 @@ textarea {
     transform: translateY(-2px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+/* Thêm vào cuối file style.css */
+.hidden-file-input {
+    display: none;
+}
+
+.form-group .btn-secondary {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.form-group .form-hint {
+    font-size: 0.9em;
+    color: var(--light-text-color);
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
